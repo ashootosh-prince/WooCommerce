@@ -4,7 +4,7 @@ if(process.env.NODE_ENV != "production") {
 const WooCommerceRestApi = require('@woocommerce/woocommerce-rest-api').default;
 
 const WooCommerce = new WooCommerceRestApi({
-  url:'https://ecom-softly-hard-blaze.wpcomstaging.com',
+  url:process.env.WooCommerceUrl,
   consumerKey: process.env.WooCommerce_ConsumerKey,
   consumerSecret: process.env.WooCommerce_ConsumerSecret,
   version: 'wc/v3',
