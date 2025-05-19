@@ -1,12 +1,16 @@
-
+if(process.env.NODE_ENV != "production") {
+    require('dotenv').config();
+}
 const WooCommerceRestApi = require('@woocommerce/woocommerce-rest-api').default;
+
+console.log("Initializing WooCommerce client with hardcoded config...");
 
 const WooCommerce = new WooCommerceRestApi({
   url:'https://ecom-softly-hard-blaze.wpcomstaging.com',
-  consumerKey: 'ck_45f56aef41d13094a491ac745243e9a11080476b',
-  consumerSecret:'cs_1ff8f0783046758ae7c675a0120e2fad1ff3c189',
+  consumerKey: process.env.WooCommerce_ConsumerKey,
+  consumerSecret: process.env.WooCommerce_ConsumerSecret,
   version: 'wc/v3',
   queryStringAuth: true,
 });
-
+console.log('WooCommerce client created successfully');
 module.exports = WooCommerce;

@@ -12,7 +12,7 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 const port = 8080;
-const dbUrl = process.env.mongo_URL;
+const dbUrl = 'mongodb://localhost:27017/WooCommerce'
 
 main().then(() => {
     console.log("connection to DB");
@@ -23,17 +23,6 @@ main().then(() => {
 async function main() {
     await mongoose.connect(dbUrl);
 }
-
-// const store = Mongoose.create({
-//     mongoUrl:dbUrl,
-//     crypto: {
-//         secret: "mysupersecretcode"
-//     },
-//     touchAfter: 24 * 3600,
-// });
-// store.on("error", () => {
-//     console.log("ERROR IN MONGO SESSION STORE", err);
-// })
 
 
 app.use('/api/auth', authRoutes);
